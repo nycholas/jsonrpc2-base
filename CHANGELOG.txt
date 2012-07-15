@@ -1,0 +1,54 @@
+CHANGE LOG
+
+JsonRpc2-Client, Copyright (c) Vladimir Dzhuvinov, 2010 - 2012
+
+
+version 1.0 (2010-11-09)
+	* First release.
+
+version 1.1 (2011-03-10)
+	* Major refactoring and API change.
+	* Adds optional setting for custom "Content-Type" header in HTTP POST
+	  requests.
+	* Adds optional setting to customise the allowable "Content-Type" header
+	  values in HTTP POST responses.
+	* Adds optional setting to disable strict JSON-RPC 2.0 parsing of
+	  responses to allow sessions with older JSON-RPC (1.0) servers.
+	* Adds optional setting to trust self-signed server sertificates for
+	  secure HTTPS connections.
+
+version 1.2 (2011-03-29)
+	* Skips ID match checking for JSON-RPC 2.0 responses indicating errors
+	  -32700 (parse error), -32600 (invalid request) and -32603 (internal
+	  error).
+
+version 1.3 (2011-07-11)
+	* Raises minimal JSON-RPC 2.0 Base requirement to version 1.19.
+	* Deprecates JSONRPC2Session.disableStrictParsing() in favour of
+	  JSONRPC2Session.ignoreVersion().
+	* Deprecates JSONRPC2Session.strictParsingDisabled() in favour of
+	  JSONRPC2Session.ignoresVersion().
+	* Adds option to parse non-standard attributes appended to 
+	  JSON-RPC 2.0 responses.
+
+version 1.4 (2011-07-13)
+	* Moves all optional session properties and methods into a separate
+	  JSONPRC2SessionOptions class.
+	* Adds a JUnit test for the JSONRPC2SessionOptions class.
+
+version 1.5 (2011-07-18)
+	* Adds an interface for specifying a custom HTTP URL connection
+	  configurator.
+
+version 1.6 (2011-08-23)
+	* Adds an interface and class for inspecting the raw HTTP response.
+	* Adds a configuration option to accept HTTP cookies.
+
+version 1.7 (2012-02-16)
+	* Provides additional JSON-RPC 2.0 session exception cause types.
+
+version 1.7.1 (2012-04-03)
+	* Updates JSON-RPC 2.0 Base JAR to 1.25.1 (JSON Smart 1.1.1).
+
+version 1.7.2 (2012-07-15)
+	* Add pom.xml.

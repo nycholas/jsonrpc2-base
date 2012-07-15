@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.thetransactioncompany.jsonrpc2</groupId>
+    <artifactId>jsonrpc2client</artifactId>
+    <version>1.7.2</version>
+    <packaging>jar</packaging>
+    <name>jsonrpc2client</name>
+
+    <build>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>resources</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <additionalConfig>
+                        <file>
+                            <name>.settings/org.eclipse.core.resources.prefs</name>
+                            <content>
+                                    <![CDATA[eclipse.preferences.version=1${line.separator}encoding/<project>=UTF-8${line.separator}]]>
+                            </content>
+                        </file>
+                        <!-- <file> <name>.project</name> <content> <![CDATA[projectDescription.natures.nature=com.android.ide.eclipse.adt.AndroidNature]]>
+                            </content> </file> -->
+                    </additionalConfig>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <skipTests>false</skipTests>
+                    <testFailureIgnore>false</testFailureIgnore>
+                    <includes>
+                        <include>**/suites/*Unit*.java</include>
+                    </includes>
+                    <excludes>
+                        <exclude>**/suites/*Integration*.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+        </plugins>
+
+    </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <env>dev</env>
+                <maven.test.skip>true</maven.test.skip>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>test</id>
+            <properties>
+                <env>test</env>
+                <maven.test.skip>false</maven.test.skip>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <skipTests>false</skipTests>
+                            <testFailureIgnore>false</testFailureIgnore>
+                            <includes>
+                                <include>**/suites/*.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>stag</id>
+            <properties>
+                <env>stag</env>
+                <maven.test.skip>true</maven.test.skip>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>prod</id>
+            <!-- via this activation the profile is automatically used when the release
+                is done with the maven release plugin -->
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <properties>
+                <env>prod</env>
+                <maven.test.skip>true</maven.test.skip>
+            </properties>
+        </profile>
+    </profiles>
+
+    <dependencies>
+         <dependency>
+          <groupId>com.thetransactioncompany.jsonrpc2</groupId>
+          <artifactId>jsonrpc2base</artifactId>
+          <version>1.26.1</version>
+          <scope>compile</scope>
+         </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>ossrh</id>
+            <name>Sonatype OSS Repository</name>
+            <url>http://oss.sonatype.org/content/groups/public</url>
+            <layout>default</layout>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <repositories>
+        <repository>
+            <id>snapshots-repository</id>
+            <name>Sonatype oss snapshot repo</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
+    </repositories>
+
+</project>
