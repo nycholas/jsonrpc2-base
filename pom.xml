@@ -3,10 +3,10 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.thetransactioncompany.jsonrpc2</groupId>
-    <artifactId>jsonrpc2client</artifactId>
-    <version>1.7.2</version>
+    <artifactId>jsonrpc2base</artifactId>
+    <version>1.26.1</version>
     <packaging>jar</packaging>
-    <name>jsonrpc2client</name>
+    <name>jsonrpc2base</name>
 
     <build>
 
@@ -138,12 +138,11 @@
     </profiles>
 
     <dependencies>
-         <dependency>
-          <groupId>com.thetransactioncompany.jsonrpc2</groupId>
-          <artifactId>jsonrpc2base</artifactId>
-          <version>1.26.1</version>
-          <scope>compile</scope>
-         </dependency>
+        <dependency>
+            <groupId>net.minidev</groupId>
+            <artifactId>json-smart</artifactId>
+            <version>1.1.1</version>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>

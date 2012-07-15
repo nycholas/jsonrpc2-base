@@ -1,82 +1,80 @@
-JSON-RPC 2.0 Client
+JSON-RPC 2.0 Base
 
-Copyright (c) Vladimir Dzhuvinov, 2010 - 2012
+Copyright (c) Vladimir Dzhuvinov, 2009 - 2012
 
 
 README
 
-Provides a client-side class for dispatching requests and notifications to a 
-JSON-RPC 2.0 server. The JSON-RPC 2.0 messages are sent by HTTP(S) POST.
-
-Optional client session features:
-
-	* Customise the "Content-Type" header in HTTP POST requests.
-	
-	* Set an "Origin" header in HTTP POST requests to simulate Cross-Origin 
-	  Resource Sharing (CORS) requests from a browser.
-	  
-	* Accept HTTP cookies (if client sessions are established by this mean
-	  instead of through the JSON-RPC protocol itself).
-	  
-	* Customise the allowable "Content-Type" header values in HTTP POST 
-	  responses.
-	  
-	* Preserve parse order of JSON object members in JSON-RPC 2.0 response 
-	  results (for human facing clients, e.g. the JSON-RPC 2.0 Shell).
-	  
-	* Ignore version 2.0 checks when parsing responses to allow client 
-	  sessions to older JSON-RPC (1.0) servers.
-
-	* Parse non-standard attributes appended in JSON-RPC 2.0 responses.
-	
-	* Trust all X.509 server certificates (for HTTPS connections), including
-	  self-signed.
+This package provides Java classes to represent, parse and serialise JSON-RPC
+2.0 requests, notifications and responses.
 
 
 
 Requirements:
 
-	* Java 1.5 or later
+	* Java 1.6 or later
 	
-	* The JSON-RPC 2.0 Base package com.thetransactioncompany.jsonrpc2 to 
-	  represent, serialise and parse JSON-RPC 2.0 messages. Available from
-	  http://software.dzhuvinov.com/json-rpc-2.0-base.html
+	* The package depends on the JSON Smart library for JSON encoding and
+	  decoding (this is a fork of the popular JSON.simple toolkit, but with
+	  more efficent parsing). Its classes are conveniently included in the 
+	  distributed JAR so you don't have to download and install it 
+	  separately. JSON Smart is at http://code.google.com/p/json-smart/
 
 
 
 Package content:
 
-        README.txt                    This file.
+        README.txt                  This file.
         
-        LICENSE.txt                   The software license.
+        LICENSE.txt                 The software license.
 	
-	CHANGELOG.txt                 The change log.
+	CHANGELOG.txt               The change log.
 	
-	jsonrpc2-client-{version}.jar JAR file containing the compiled package
-	                              classes.
+	jsonrpc2-base-{version}.jar JAR file containing the compiled package
+	                            classes as well as the classes of the 
+				    required JSON Smart package for JSON 
+				    encoding and decoding.
+
+	Example1.java               Example showing the complete life cycle of a 
+	                            JSON-RPC 2.0 request.
+				
+	Example2.java               Example demonstrating how to parse a 
+	                            JSON-RPC 2.0 message and determine its type 
+				    - whether it's a request, notification or 
+				    response.
+	
+	Example3.java               Example showing how to use the utility 
+	                            classes to extract positional or named 
+				    parameters from incoming requests with 
+				    proper regard of type, and mandatory/optional 
+				    values.
 				  
-	javadoc/                      The Java Docs for this package.
+	javadoc/                    The Java Docs for this package.
 	
-	Example.java                  Example client session usage.
+	build.xml                   The Apache Ant build file.
 	
-	build.xml                     The Apache Ant build file.
-	
-	lib/                          The package dependencies and their licenses.
+	lib/                        The package dependencies and their licenses.
         
-	src/			      The source code for this package.
+	src/			    The source code for this package.
 	
-	test/                         JUnit tests for this package.
+	test/                       JUnit tests for this package.
 
 
 
-For complete JSON-RPC 2.0 Client documentation, examples and updates visit
+
+For complete JSON-RPC 2.0 Base documentation, examples and updates visit
 	
-	http://software.dzhuvinov.com/json-rpc-2.0-client.html
+	http://software.dzhuvinov.com/json-rpc-2.0-base.html
 
 
 The JSON-RPC 2.0 specification and user group forum can be found at
 
 	http://groups.google.com/group/json-rpc
+	
+
+The JSON Smart library is at
+
+	http://code.google.com/p/json-smart/
 
 
 [EOF]
